@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 int win(){
-  int* winvar = (int*)malloc(0x8);
-  if (*winvar == 13371337){
+  int* winvar = (int*)malloc(0x20);
+  if (winvar[4] == 1337){
     system("/bin/sh");
   }
 }
@@ -19,9 +19,9 @@ int main(){
     switch (c){
       case 'M':
         if (curr_buffer == NULL){
-          curr_buffer = malloc(0x8);
-          printf("write your contents in buffer (size 0x8): ");
-          scanf("%d", curr_buffer);
+          curr_buffer = malloc(0x20);
+          printf("data for allocated memory (0x20 bytes):");
+          scanf("%d", curr_buffer + 4);
         }
         break;
       case 'F':
